@@ -21,10 +21,9 @@ To clone the repository and stow the dotfiles:
    ```
 
 3. **Run the Script**:
-   ````
-   ```bash~/dotfiles/install_dotfile.sh`
-   ```
-   ```
+
+   ```bash
+   ~/dotfiles/install_dotfile.sh`
    ````
 
 This script will:
@@ -50,6 +49,7 @@ For a complete setup that includes installing essential tools and fonts:
    ```
 
 3. **Run the Script**:
+
    ```bash
    ~/dotfiles/setup_environment.sh
    ```
