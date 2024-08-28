@@ -1,0 +1,183 @@
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "files.autoSave": "afterDelay",
+  "files.exclude": {
+    "**/.git": false
+  },
+  "explorer.compactFolders": false,
+  "editor.mouseWheelZoom": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  "redhat.telemetry.enabled": true,
+  "cSpell.userWords": [
+    "appwrite",
+    "Atif",
+    "CGPA",
+    "Cloudinary",
+    "customeractivities",
+    "ezdinein",
+    "fullname",
+    "Insta",
+    "Intelli",
+    "Kashif",
+    "Kashifkhn",
+    "mapbox",
+    "MERN",
+    "Nums",
+    "Quora",
+    "Randomizer",
+    "resave",
+    "singup",
+    "spammy",
+    "svgs",
+    "tailwindcss",
+    "toastify",
+    "todos",
+    "Toxi",
+    "upsert",
+    "virtuals",
+    "Wasif",
+    "Zarqan"
+  ],
+  // vim settingshh;
+  "vim.easymotion": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": false,
+  "vim.hlsearch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["K"],
+      "commands": ["editor.action.showHover"]
+    },
+    {
+      "before": ["leader", "q"],
+      "commands": ["editor.action.quickFix"]
+    },
+    {
+      "before": ["leader", "leader"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "e"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
+    },
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "d"],
+      "after": ["d", "d"]
+    },
+    {
+      "before": ["K"],
+      "commands": ["lineBreakInsert"],
+      "silent": true
+    }
+  ],
+
+  "vim.leader": "<space>",
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false
+  },
+
+  // To improve performance
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "liveServer.settings.donotShowInfoMsg": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "scminput": false,
+    "javascript": true,
+    "snippets": true,
+    "java": true,
+    "typescript": true,
+    "typescriptreact": true,
+    "prisma": false
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.fontSize": 16,
+  "window.zoomLevel": 0.5,
+  "emmet.syntaxProfiles": {
+    "javascript": "jsx"
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.endOfLine": "auto",
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java"
+  },
+  "prettier.bracketSameLine": true,
+  "git.enableSmartCommit": true,
+  "window.commandCenter": false,
+  "java.completion.favoriteStaticMembers": [
+    "org.junit.Assert.*",
+    "org.junit.Assume.*",
+    "org.junit.jupiter.api.Assertions.*",
+    "org.junit.jupiter.api.Assumptions.*",
+    "org.junit.jupiter.api.DynamicContainer.*",
+    "org.junit.jupiter.api.DynamicTest.*",
+    "org.mockito.Mockito.*",
+    "org.mockito.ArgumentMatchers.*",
+    "org.mockito.Answers.*",
+    "static"
+  ],
+  "workbench.productIconTheme": "a-file-icon-vscode-product-icon-theme",
+  "search.showLineNumbers": true,
+  "editor.lineNumbers": "relative",
+  "prettier.singleAttributePerLine": true,
+  "workbench.sideBar.location": "right",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "github.copilot.editor.enableAutoCompletions": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "zenMode.hideStatusBar": false,
+  "workbench.editor.enablePreview": false,
+  "window.menuBarVisibility": "toggle",
+  "workbench.editorAssociations": {
+    "*.bin": "default",
+    "*.db": "default"
+  },
+  "terminal.integrated.env.linux": {},
+  "editor.largeFileOptimizations": false,
+  "code-runner.runInTerminal": true,
+  "console-ninja.featureSet": "Community",
+  "glassit-linux.opacity": 92,
+  "workbench.colorTheme": "Tokyo Night",
+  "gitlens.ai.experimental.model": "vscode",
+  "gitlens.ai.experimental.vscode.model": "copilot:gpt-3.5-turbo"
+}
