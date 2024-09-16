@@ -115,7 +115,16 @@ alias python="python3"
 alias ls=lsd
 alias vi=nvim
 alias bat=batcat
+alias dc=docker-compose
 
+# custom functions aliases
+spring() {
+  if [ "$1" = "run" ]; then
+    ./mvnw spring-boot:run
+  else
+    echo "Unknown command: $1"
+  fi
+}
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
