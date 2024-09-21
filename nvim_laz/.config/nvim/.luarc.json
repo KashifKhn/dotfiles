@@ -1,0 +1,11 @@
+{
+    "diagnostics.globals": [
+        "des"
+    ],
+    "diagnostics.disable": [
+        "missing-parameter",
+        "undefined-doc-name",
+        "missing-fields",
+        "unused-local"
+    ]
+}
