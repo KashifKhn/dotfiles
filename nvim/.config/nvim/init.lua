@@ -1,3 +1,3 @@
-require("core.keymaps")
+require("customs.core.keymaps")
 require("lazyconfig")
-require("core.options")
+require("customs.core.options")
