@@ -9,12 +9,14 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+
 # Path to tmuxifier
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 
 # Commented out Powerlevel10k theme and other themes for simplicity
+ZSH_THEME="robbyrussell"
 # ZSH_THEME="powerlevel10k/powerlevel10k"
-eval "$(starship init zsh)"  # Commenting out Starship as well
+# eval "$(starship init zsh)"  # Commenting out Starship as well
 
 # Export necessary environment variables for dark theme
 export QT_QPA_PLATFORMTHEME=qt5ct
@@ -27,7 +29,7 @@ CASE_SENSITIVE="true"
 ENABLE_CORRECTION="true"
 
 # Plugins to load (keeping it simple)
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions fast-syntax-highlighting fzf )
 
 # Oh My Zsh
 source $ZSH/oh-my-zsh.sh
@@ -53,6 +55,19 @@ spring() {
 
 # Path for console-ninja
 PATH=~/.console-ninja/.bin:$PATH
+
+
+# Fuzzy search setup
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Export for faster fuzzy finders and completion
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# History settings for faster recalling of commands
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
 
 # Bun completions
 [ -s "/home/zarqan-khn/.bun/_bun" ] && source "/home/zarqan-khn/.bun/_bun"
