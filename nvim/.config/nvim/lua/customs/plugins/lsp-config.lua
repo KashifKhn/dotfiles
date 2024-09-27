@@ -1,4 +1,5 @@
 return {
+
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		{ "williamboman/mason.nvim", config = true },
@@ -27,7 +28,18 @@ return {
 				map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 				map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 				map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+				map("<leader>ch", vim.lsp.buf.hover, "[h]over")
 				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
+				map("<leader>cA", function()
+					vim.lsp.buf.code_action({
+						apply = true,
+						context = {
+							only = { "source" },
+							diagnostics = {},
+						},
+					})
+				end, "[S]ource [A]ction", { "n", "x" })
+				map("<leader>cr", vim.lsp.buf.rename, "[C]ode [r]ename", { "n" })
 				map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
 				local client = vim.lsp.get_client_by_id(event.data.client_id)
@@ -94,6 +106,7 @@ return {
 			jdtls = {},
 			dockerls = {},
 			docker_compose_language_service = {},
+			prismals = {},
 			lua_ls = {
 				settings = {
 					Lua = {
@@ -109,7 +122,18 @@ return {
 		vim.list_extend(ensure_installed, {
 			"stylua",
 		})
-		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+		require("mason-tool-installer").setup({
+			ensure_installed = {
+				ensure_installed,
+				"prettier",
+				"stylua",
+				"isort",
+				"black",
+				"pylint",
+				"eslint_d",
+				"eslint",
+			},
+		})
 
 		require("mason-lspconfig").setup({
 			handlers = {

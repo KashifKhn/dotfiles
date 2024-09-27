@@ -22,10 +22,10 @@ for_window [class="^.*"] border pixel 1
 
 
 
+
 exec --no-startup-id picom
 # exec --no-startup-id feh --bg-scale ~/backgounds/nice-blue-background.png
 exec --no-startup-id xrdb -merge ~/.Xresources
-exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 
 # exec --no-startup-id nm-applet
 # exec --no-startup-id blueman-applet

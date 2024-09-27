@@ -18,6 +18,14 @@ ZSH_THEME="robbyrussell"
 # ZSH_THEME="powerlevel10k/powerlevel10k"
 # eval "$(starship init zsh)"  # Commenting out Starship as well
 
+
+# New line command
+OMZ_NEW_LINE_FORMAT=$'\n ➜ '
+ZSH_THEME_GIT_PROMPT_SUFFIX+=$OMZ_NEW_LINE_FORMAT
+
+# Uncomment if you want to move the command line to a new line always 
+PROMPT+=$OMZ_NEW_LINE_FORMAT
+
 # Export necessary environment variables for dark theme
 export QT_QPA_PLATFORMTHEME=qt5ct
 export GTK_THEME=Adwaita-dark
