@@ -61,6 +61,32 @@ spring() {
   fi
 }
 
+crun() {
+  if [ "$1" = "run" ]; then
+    if [ -z "$2" ]; then
+      echo "Error: No source file provided."
+      return 1
+    fi
+
+    if [ ! -f "$2" ]; then
+      echo "Error: Source file '$2' not found."
+      return 1
+    fi
+
+    filename="${2%.*}"
+
+    gcc "$2" -o "$filename"
+    
+    if [ $? -eq 0 ]; then
+      ./"$filename"
+    else
+      echo "Compilation failed."
+    fi
+  else
+    echo "Unknown command: $1"
+  fi
+}
+
 # Path for console-ninja
 PATH=~/.console-ninja/.bin:$PATH
 
@@ -94,3 +120,6 @@ esac
 # XDG directories
 export XDG_DOWNLOAD_DIR="$HOME/Downloads"
 export XDG_MUSIC_DIR="$HOME/Music"
+
+# vscode-json-lsp
+export PATH="$PATH:$HOME/.local/share/pnpm"
