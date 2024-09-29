@@ -15,7 +15,7 @@ exec --no-startup-id env QT_QPA_PLATFORMTHEME=qt5ct
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 0 
 
 # set mode keys Mod1 (Alt) and Mod4 (Super/ Windows key)
  set $mod Mod1
