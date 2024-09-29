@@ -17,6 +17,7 @@ return {
 				markdown = { "prettier" },
 				graphql = { "prettier" },
 				liquid = { "prettier" },
+				prisma = { "prettier" },
 				lua = { "stylua" },
 				python = { "isort", "black" },
 			},
@@ -25,6 +26,7 @@ return {
 				async = false,
 				timeout_ms = 1000,
 			},
+			stop_after_first = true,
 		})
 
 		vim.keymap.set({ "n" }, "<leader>cf", function()
