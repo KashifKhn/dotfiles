@@ -30,7 +30,7 @@ return {
 				map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 				map("<leader>ch", vim.lsp.buf.hover, "[h]over")
 				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
-				map("<leader>cD", require("telescope.builtin").diagnostics, "[C]ode [A]ction", { "n", "x" })
+				map("<leader>cD", require("telescope.builtin").diagnostics, "[C]ode [D]diagnostics List", { "n", "x" })
 				map("<leader>cA", function()
 					vim.lsp.buf.code_action({
 						apply = true,
@@ -77,30 +77,14 @@ return {
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
-		local lspconfig = require("lspconfig")
-		lspconfig.tailwindcss.setup({
-			capabilities = capabilities,
-		})
-		lspconfig.ts_ls.setup({
-			capabilities = capabilities,
-		})
-		lspconfig.jsonls.setup({
-			capabilities = capabilities,
-		})
-		lspconfig.bashls.setup({
-			capabilities = capabilities,
-		})
-		lspconfig.yamlls.setup({
-			capabilities = capabilities,
-		})
-		lspconfig.solargraph.setup({
-			capabilities = capabilities,
-		})
-		lspconfig.html.setup({
-			capabilities = capabilities,
-		})
-
 		local servers = {
+			tailwindcss = {},
+			ts_ls = {},
+			jsonls = {},
+			bashls = {},
+			yamlls = {},
+			solargraph = {},
+			html = {},
 			clangd = {},
 			gopls = {},
 			pyright = {},
@@ -117,6 +101,10 @@ return {
 					},
 				},
 			},
+			mdx_analyzer = {},
+			css_variables = {},
+			cssls = {},
+			cssmodules_ls = {},
 		}
 		require("mason").setup()
 		local ensure_installed = vim.tbl_keys(servers or {})
