@@ -31,9 +31,7 @@ exec --no-startup-id xrdb -merge ~/.Xresources
 # exec --no-startup-id blueman-applet
 
 # For taking a screenshot of the entire screen
-bindsym Print exec --no-startup-id gnome-screenshot
-# For taking a screenshot of a selected area
-bindsym Shift+Print exec --no-startup-id gnome-screenshot -a
+bindsym Mod4+Shift+s exec --no-startup-id flameshot gui
 
 # kill any hanging polybar processes
 exec_always killall polybar
