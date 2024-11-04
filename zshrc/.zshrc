@@ -53,7 +53,7 @@ alias dc=docker-compose
 alias pdf=evince
 
 # Custom function aliases
-spring() {
+mv-spring() {
   if [ "$1" = "run" ]; then
     ./mvnw spring-boot:run
   else
@@ -123,3 +123,8 @@ export XDG_MUSIC_DIR="$HOME/Music"
 
 # vscode-json-lsp
 export PATH="$PATH:$HOME/.local/share/pnpm"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+. "/home/zarqan-khn/.deno/env"
