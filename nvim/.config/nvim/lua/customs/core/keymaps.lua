@@ -29,7 +29,7 @@ keymap.set("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = tr
 keymap.set("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
 
 -- Disable arrow keys in all modes
-keymap.set({ "n", "i", "v" }, "<Up>", "<Nop>", { desc = "Disable Up Arrow" })
-keymap.set({ "n", "i", "v" }, "<Down>", "<Nop>", { desc = "Disable Down Arrow" })
-keymap.set({ "n", "i", "v" }, "<Left>", "<Nop>", { desc = "Disable Left Arrow" })
-keymap.set({ "n", "i", "v" }, "<Right>", "<Nop>", { desc = "Disable Right Arrow" })
+-- keymap.set({ "n", "i", "v" }, "<Up>", "<Nop>", { desc = "Disable Up Arrow" })
+-- keymap.set({ "n", "i", "v" }, "<Down>", "<Nop>", { desc = "Disable Down Arrow" })
+-- keymap.set({ "n", "i", "v" }, "<Left>", "<Nop>", { desc = "Disable Left Arrow" })
+-- keymap.set({ "n", "i", "v" }, "<Right>", "<Nop>", { desc = "Disable Right Arrow" })
