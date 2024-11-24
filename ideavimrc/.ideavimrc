@@ -1,0 +1,69 @@
+let mapleader = " "
+
+" clear search highlights with escape in normal mode
+nnoremap <esc> :nohlsearch<cr>
+
+" exit insert mode by typing 'jj'
+inoremap jj <esc>
+
+set relativenumber          " enable relative line numbers for motion
+set scrolloff=5             " keep cursor 5 lines from screen edge
+set cursorline              " highlight the current line
+
+
+" Copy to global clipboard
+nnoremap <C-c> "+y
+vnoremap <C-c> "+y
+
+" window navigation
+nnoremap <c-h> <c-w>h       " move to the left window
+nnoremap <c-l> <c-w>l       " move to the right window
+nnoremap <c-j> <c-w>j       " move to the window below
+nnoremap <c-k> <c-w>k       " move to the window above
+
+" intellij tool window toggles
+" toggle project tool window with leader + e
+nnoremap <leader>e :action toggleprojecttoolwindow<cr>
+" close project tool window with leader + ee
+nnoremap <leader>ee :action hideactivewindow<cr>
+
+nnoremap <leader>t :action activateterminaltoolwindow<cr> " open terminal
+
+nnoremap <leader>g :action gotofile<cr>
+nnoremap <leader>p :action showrecentfiles<cr>
+
+nnoremap gd :action gotodeclaration<cr>
+nnoremap gr :action findusages<cr>
+nnoremap gi :action gotoimplementation<cr>
+nnoremap <leader>d :action gototypedeclaration<cr>
+nnoremap <leader>ds :action filestructurepopup<cr>
+nnoremap <leader>ws :action typehierarchypopup<cr>
+nnoremap <leader>rn :action renameelement<cr>
+nnoremap <leader>ch :action quickdocumentation<cr>
+nnoremap <leader>ca :action showintentionactions<cr>
+nnoremap <leader>cg :action generate<cr>
+nnoremap <leader>cd :action showerrorsinproject<cr>
+nnoremap <leader>cf :action CodeFormatGroup<cr>
+     
+" additional mappings
+nnoremap <leader>sf :action searcheverywhere<cr>
+nnoremap <leader>sw :action findwordatcaret<cr>
+nnoremap <leader>sg :action searchgrep<cr>
+nnoremap <leader>sd :action showerrorsinfile<cr>
+nnoremap <leader>sr :action recentchanges<cr>
+nnoremap <leader>s. :action recentfiles<cr>
+nnoremap <leader><leader> :action switcher<cr>
+
+" navigate through suggestions with ctrl +n and ctrl + p
+nnoremap <c-n> :action nextlookupitem<cr>
+nnoremap <c-p> :action previouslookupitem<cr>
+
+" trigger autocompletion if not showing
+nnoremap <c-space> :action codecompletion<cr>
+
+" select the current suggestion
+nnoremap <c-y> :action editorchooselookupitem<cr>
+
+
+
+
