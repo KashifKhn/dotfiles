@@ -136,3 +136,6 @@ export "PATH=$JAVA_HOME/bin:$PATH"
 
 export YAY_CACHE_DIR="/home/zarqan-khn/.cache/yay"
 export BUILDDIR="/home/zarqan-khn/.build"
+
+
+export JDTLS_JVM_ARGS="-javaagent:$HOME/.local/share/nvim/mason/packages/jdtls/lombok.jar"
