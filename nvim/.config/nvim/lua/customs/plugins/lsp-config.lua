@@ -30,12 +30,12 @@ return {
 				map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 				map("<leader>ch", vim.lsp.buf.hover, "[h]over")
 				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
+
 				map("<leader>cD", require("telescope.builtin").diagnostics, "[C]ode [D]diagnostics List", { "n", "x" })
 				map("<leader>cA", function()
 					vim.lsp.buf.code_action({
 						apply = true,
 						context = {
-							only = { "source" },
 							diagnostics = {},
 						},
 					})

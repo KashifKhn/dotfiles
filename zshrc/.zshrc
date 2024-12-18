@@ -51,6 +51,8 @@ alias ls=lsd
 alias vi=nvim
 alias dc=docker-compose
 alias pdf=evince
+alias vi-learn="NVIM_APPNAME=learn-nvim-lua vi"
+
 
 # Custom function aliases
 mv-spring() {
@@ -87,6 +89,61 @@ crun() {
   fi
 }
 
+
+javarun() {
+  if [ "$1" = "run" ]; then
+    if [ -z "$2" ]; then
+      echo "Error: No source file provided."
+      return 1
+    fi
+
+    if [ ! -f "$2" ]; then
+      echo "Error: Source file '$2' not found."
+      return 1
+    fi
+
+    # Extract the filename without extension
+    filename="${2%.*}"
+
+    # Compile the Java file
+    javac "$2"
+    
+    # Check if compilation was successful
+    if [ $? -eq 0 ]; then
+      # Run the compiled Java class using 'java' command
+      java "$filename"
+    else
+      echo "Compilation failed."
+    fi
+  else
+    echo "Unknown command: $1"
+  fi
+}
+
+
+# fzf find folder to ctrl f and ctrl shif f
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd fzf_keybinds
+fzf_keybinds() {
+  zle -N fzf_cd_home
+  zle -N fzf_cd_current
+  bindkey '^F' fzf_cd_home
+  bindkey '\e[1;6F' fzf_cd_current
+}
+fzf_cd_home() {
+  local dir
+  dir=$(fd --type d --hidden --exclude .git --exclude node_modules . "$HOME" | fzf) || return
+  cd "$dir" || return
+  zle reset-prompt
+}
+fzf_cd_current() {
+  local dir
+  dir=$(fd --type d --hidden --exclude .git --exclude node_modules . . | fzf) || return
+  cd "$dir" || return
+  zle reset-prompt
+}
+
+
 # Path for console-ninja
 PATH=~/.console-ninja/.bin:$PATH
 
@@ -114,7 +171,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export PNPM_HOME="/home/zarqan-khn/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+ *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
 # XDG directories

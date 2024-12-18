@@ -92,7 +92,8 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id rofi -show drun
 # bindsym $mod+space exec --no-startup-id rofi -show combi
 bindsym $mod+space exec --no-startup-id rofi -show drun
-bindsym $mod+Tab exec --no-startup-id rofi -show window
+# bindsym $mod+Tab exec --no-startup-id rofi -show window
+# bindsym $mod+Tab exec --no-startup-id rofi -show combi
 
 # change focus
 bindsym $mod+h focus left

@@ -24,4 +24,7 @@ return {
 	config = function()
 		require("undotree").setup(opts)
 	end,
+	keys = {
+		{ "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
+	},
 }

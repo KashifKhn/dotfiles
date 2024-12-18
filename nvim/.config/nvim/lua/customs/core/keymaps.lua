@@ -10,6 +10,7 @@
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.g.user_emmet_leader_key = "<C-e>"
 
 local keymap = vim.keymap
 
