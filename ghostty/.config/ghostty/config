@@ -1,0 +1,17 @@
+font-family = "MesloLGS Nerd Font Mono"
+font-style-bold-italic = true
+font-size = 14
+
+# disable title bar
+window-decoration = false
+
+# rose pine theme
+theme = rose-pine
+# green
+palette = 2=#31748f
+palette = 10=#31748f
+# blue
+palette = 4=#9ccfd8
+palette = 12=#9ccfd8
+selection-background = #403d52
+
