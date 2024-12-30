@@ -3,7 +3,7 @@ vim.cmd("let g:netrw_liststyle = 3")
 local opt = vim.opt
 
 opt.number = true
-opt.relativenumber = false
+opt.relativenumber = true
 opt.swapfile = false
 opt.mouse = "a"
 opt.showmode = false

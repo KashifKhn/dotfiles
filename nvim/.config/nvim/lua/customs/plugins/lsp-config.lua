@@ -79,11 +79,9 @@ return {
 
 		local servers = {
 			tailwindcss = {},
-			ts_ls = {},
 			jsonls = {},
 			bashls = {},
 			yamlls = {},
-			solargraph = {},
 			html = {},
 			clangd = {},
 			gopls = {},
@@ -101,10 +99,6 @@ return {
 					},
 				},
 			},
-			mdx_analyzer = {},
-			css_variables = {},
-			cssls = {},
-			cssmodules_ls = {},
 		}
 		require("mason").setup()
 		local ensure_installed = vim.tbl_keys(servers or {})
@@ -116,12 +110,9 @@ return {
 				ensure_installed,
 				"prettier",
 				"stylua",
-				"isort",
 				"black",
 				"pylint",
 				"eslint_d",
-				"eslint",
-				"jsonls",
 			},
 		})
 
