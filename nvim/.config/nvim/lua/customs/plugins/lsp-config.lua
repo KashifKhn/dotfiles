@@ -5,9 +5,7 @@ return {
 		{ "williamboman/mason.nvim", config = true },
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
-
 		{ "j-hui/fidget.nvim", opts = {} },
-
 		"hrsh7th/cmp-nvim-lsp",
 	},
 	config = function()
@@ -112,11 +110,13 @@ return {
 				"stylua",
 				"black",
 				"pylint",
-				"eslint_d",
+				{ "eslint_d", version = "13.1.2" },
 			},
 		})
 
 		require("mason-lspconfig").setup({
+			ensure_installed = {},
+			automatic_installation = {},
 			handlers = {
 				function(server_name)
 					local server = servers[server_name] or {}

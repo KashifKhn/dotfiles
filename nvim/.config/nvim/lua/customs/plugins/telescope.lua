@@ -1,4 +1,4 @@
-return { -- Fuzzy Finder (files, lsp, etc)
+return {
 	"nvim-telescope/telescope.nvim",
 	event = "VimEnter",
 	branch = "0.1.x",
@@ -23,6 +23,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 	},
 	config = function()
+		local actions = require("telescope.actions")
 		require("telescope").setup({
 			extensions = {
 				["ui-select"] = {
@@ -30,6 +31,11 @@ return { -- Fuzzy Finder (files, lsp, etc)
 				},
 			},
 			defaults = {
+				mappings = {
+					n = {
+						["q"] = actions.close,
+					},
+				},
 				vimgrep_arguments = {
 					"rg",
 					"--follow", -- Follow symbolic links
@@ -47,7 +53,9 @@ return { -- Fuzzy Finder (files, lsp, etc)
 					"--glob=!**/dist/*",
 					"--glob=!**/target/*",
 					"--glob=!**/yarn.lock",
+					"--glob=!**/node_modules/*",
 					"--glob=!**/package-lock.json",
+					"--glob=!**/pnpm-lock.yaml",
 				},
 			},
 			pickers = {
@@ -60,6 +68,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 						"--glob=!**/.git/*",
 						"--glob=!**/.idea/*",
 						"--glob=!**/.vscode/*",
+						"--glob=!**/node_modules/*",
 						"--glob=!**/build/*",
 						"--glob=!**/dist/*",
 						"--glob=!**/target/*",
@@ -84,6 +93,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
 		vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 		vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+		vim.keymap.set("n", "<leader>t", ":TodoTelescope<CR>", { desc = "Show all Todo " })
 
 		-- Slightly advanced example of overriding default behavior and theme
 		vim.keymap.set("n", "<leader>/", function()
