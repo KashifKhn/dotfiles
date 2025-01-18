@@ -120,6 +120,11 @@ javarun() {
   fi
 }
 
+remove_chrome_lock() {
+  rm -rf ~/.config/google-chrome/SingletonLock;
+  echo "Removed Chrome SingletonLock"
+}
+
 
 # fzf find folder to ctrl f and ctrl shif f
 autoload -Uz add-zsh-hook
@@ -143,9 +148,48 @@ fzf_cd_current() {
   zle reset-prompt
 }
 
-
-# Path for console-ninja
-PATH=~/.console-ninja/.bin:$PATH
+# autoload -Uz add-zsh-hook
+#
+# fzf_keybinds() {
+#   zle -N fzf_cd_home
+#   zle -N fzf_cd_current
+#   zle -N fzf_cd_tmux
+#   bindkey '^F' fzf_cd_home
+#   bindkey '^[^F' fzf_cd_current
+#   bindkey '^[^@^F' fzf_cd_tmux
+# }
+#
+# fzf_cd_home() {
+#   local dir
+#   dir=$(fd --type d --hidden --exclude .git --exclude node_modules . "$HOME" 2>/dev/null | fzf) || return
+#   open_in_tmux "$dir"
+# }
+#
+# fzf_cd_current() {
+#   local dir
+#   dir=$(fd --type d --hidden --exclude .git --exclude node_modules . . 2>/dev/null | fzf) || return
+#   open_in_tmux "$dir"
+# }
+#
+# fzf_cd_tmux() {
+#   local dir session_name
+#   dir=$(fd --type d --hidden --exclude .git --exclude node_modules . "$HOME" 2>/dev/null | fzf) || return
+#   session_name=$(basename "$dir" | tr -d '[:space:]')
+#   tmux new-session -A -s "$session_name" -c "$dir"
+#   tmux switch-client -t "$session_name"
+# }
+#
+# open_in_tmux() {
+#   local dir=$1
+#   if [[ -n $TMUX ]]; then
+#     tmux new-window -c "$dir" -n "$(basename "$dir")"
+#   else
+#     tmux new-session -A -s "$(basename "$dir")" -c "$dir"
+#   fi
+# }
+#
+# fzf_keybinds
+#
 
 
 # Fuzzy search setup
@@ -189,7 +233,12 @@ export NVM_DIR="$HOME/.nvm"
 export "JAVA_HOME=/usr/lib/jvm/java-21-openjdk"
 export "PATH=$JAVA_HOME/bin:$PATH"
 
+# removing non-existent directories for PATH
+export PATH=$(echo $PATH | tr ':' '\n' | awk '{if(system("[ -d " $0 " ]") == 0) print $0}' | paste -sd ':' -)
 
+# go path
+# export PATH="~/go/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 
 export YAY_CACHE_DIR="/home/zarqan-khn/.cache/yay"
 export BUILDDIR="/home/zarqan-khn/.build"
