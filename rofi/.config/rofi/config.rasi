@@ -1,8 +1,10 @@
-configuration{
+@theme "rose-pine"
+
+configuration {
     modi: "run,window,combi";
     icon-theme: "Oranchelo";
     show-icons: true;
-    terminal: "alacritty";
+    terminal: "ghossty";
     drun-display-format: "{icon} {name}";
     location: 0;
     disable-history: false;
@@ -13,4 +15,10 @@ configuration{
     sidebar-mode: true;
 }
 
-@theme "catppuccin-mocha"
+* {
+    background: #1d1f21;
+    foreground: #c5c8c6;
+    border-color: #666666;
+    selected-background: #b294bb;
+    selected-foreground: #c5c8c6;
+}
