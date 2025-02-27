@@ -82,8 +82,18 @@ return {
 			yamlls = {},
 			html = {},
 			clangd = {},
+			pyright = {
+				settings = {
+					python = {
+						analysis = {
+							autoSearchPaths = true,
+							diagnosticMode = "openFilesOnly",
+							useLibraryCodeForTypes = true,
+						},
+					},
+				},
+			},
 			gopls = {},
-			pyright = {},
 			jdtls = {},
 			dockerls = {},
 			docker_compose_language_service = {},
@@ -109,7 +119,6 @@ return {
 				"prettier",
 				"stylua",
 				"black",
-				"pylint",
 				{ "eslint_d", version = "13.1.2" },
 			},
 		})

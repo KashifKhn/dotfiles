@@ -23,46 +23,46 @@ nnoremap <c-k> <c-w>k       " move to the window above
 
 " intellij tool window toggles
 " toggle project tool window with leader + e
-nnoremap <leader>e :action toggleprojecttoolwindow<cr>
+nnoremap <leader>e :action Toggleprojecttoolwindow<cr>
 " close project tool window with leader + ee
-nnoremap <leader>ee :action hideactivewindow<cr>
+nnoremap <leader>ee :action Hideactivewindow<cr>
 
-nnoremap <leader>t :action activateterminaltoolwindow<cr> " open terminal
+nnoremap <leader>t :action Activateterminaltoolwindow<cr> " open terminal
 
-nnoremap <leader>g :action gotofile<cr>
-nnoremap <leader>p :action showrecentfiles<cr>
+nnoremap <leader>g :action Gotofile<cr>
+nnoremap <leader>p :action Showrecentfiles<cr>
 
-nnoremap gd :action gotodeclaration<cr>
-nnoremap gr :action findusages<cr>
-nnoremap gi :action gotoimplementation<cr>
-nnoremap <leader>d :action gototypedeclaration<cr>
-nnoremap <leader>ds :action filestructurepopup<cr>
-nnoremap <leader>ws :action typehierarchypopup<cr>
-nnoremap <leader>rn :action renameelement<cr>
-nnoremap <leader>ch :action quickdocumentation<cr>
-nnoremap <leader>ca :action showintentionactions<cr>
-nnoremap <leader>cg :action generate<cr>
-nnoremap <leader>cd :action showerrorsinproject<cr>
+nnoremap gd :action Gotodeclaration<cr>
+nnoremap gr :action Findusages<cr>
+nnoremap gi :action Gotoimplementation<cr>
+nnoremap <leader>d :action Gototypedeclaration<cr>
+nnoremap <leader>ds :action Filestructurepopup<cr>
+nnoremap <leader>ws :action Typehierarchypopup<cr>
+nnoremap <leader>rn :action Renameelement<cr>
+nnoremap <leader>ch :action Quickdocumentation<cr>
+nnoremap <leader>ca :action Showintentionactions<cr>
+nnoremap <leader>cg :action Generate<cr>
+nnoremap <leader>cd :action Showerrorsinproject<cr>
 nnoremap <leader>cf :action CodeFormatGroup<cr>
      
 " additional mappings
-nnoremap <leader>sf :action searcheverywhere<cr>
-nnoremap <leader>sw :action findwordatcaret<cr>
-nnoremap <leader>sg :action searchgrep<cr>
-nnoremap <leader>sd :action showerrorsinfile<cr>
-nnoremap <leader>sr :action recentchanges<cr>
-nnoremap <leader>s. :action recentfiles<cr>
+nnoremap <leader>sf :action Searcheverywhere<cr>
+nnoremap <leader>sw :action Findwordatcaret<cr>
+nnoremap <leader>sg :action Searchgrep<cr>
+nnoremap <leader>sd :action Showerrorsinfile<cr>
+nnoremap <leader>sr :action Recentchanges<cr>
+nnoremap <leader>s. :action Recentfiles<cr>
 nnoremap <leader><leader> :action switcher<cr>
 
 " navigate through suggestions with ctrl +n and ctrl + p
-nnoremap <c-n> :action nextlookupitem<cr>
-nnoremap <c-p> :action previouslookupitem<cr>
+nnoremap <c-n> :action Nextlookupitem<cr>
+nnoremap <c-p> :action Previouslookupitem<cr>
 
 " trigger autocompletion if not showing
-nnoremap <c-space> :action codecompletion<cr>
+nnoremap <c-space> :action Codecompletion<cr>
 
 " select the current suggestion
-nnoremap <c-y> :action editorchooselookupitem<cr>
+nnoremap <c-y> :action Editorchooselookupitem<cr>
 
 
 

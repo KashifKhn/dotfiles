@@ -5,7 +5,7 @@ return {
 		linters = {
 			eslint_d = {
 				args = {
-					"--no-warn-ignored", -- <-- this is the key argument
+					"--no-ignore",
 					"--format",
 					"json",
 					"--stdin",
@@ -25,7 +25,7 @@ return {
 			typescript = { "eslint_d" },
 			javascriptreact = { "eslint_d" },
 			typescriptreact = { "eslint_d" },
-			python = { "pylint" },
+			-- python = { "pylint" },
 		}
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

@@ -13,6 +13,8 @@ return {
 			"typescript",
 			"go",
 			"python",
+			"ninja",
+			"rst",
 			"sql",
 			"java",
 			"tsx",

@@ -47,11 +47,13 @@ export EDITOR='nvim'
 
 # Personal aliases
 alias python="python3"
+alias activate-python="source ~/.venv/bin/activate"
 alias ls=lsd
 alias vi=nvim
 alias dc=docker-compose
 alias pdf=evince
 alias vi-learn="NVIM_APPNAME=learn-nvim-lua vi"
+alias tmf="tmuxifier"
 
 
 # Custom function aliases
@@ -61,6 +63,19 @@ mv-spring() {
   else
     echo "Unknown command: $1"
   fi
+}
+
+fix-hp() {
+    systemctl --user restart pipewire wireplumber pipewire-pulse
+    if pgrep chrome > /dev/null; then
+        pkill chrome
+        google-chrome-stable --enable-features=WebRTCPipeWireCapturer &
+    elif pgrep chromium > /dev/null; then
+        pkill chromium
+        chromium --enable-features=WebRTCPipeWireCapturer &
+    else
+        echo "Chrome/Chromium is not running."
+    fi
 }
 
 crun() {
@@ -123,6 +138,67 @@ javarun() {
 remove_chrome_lock() {
   rm -rf ~/.config/google-chrome/SingletonLock;
   echo "Removed Chrome SingletonLock"
+}
+
+# Function to set up and run Python environment
+function run_python_env() {
+  if [[ -d .venv ]]; then
+    echo "Activating virtual environment..."
+    source ./.venv/bin/activate
+  else
+    echo "No .venv found. Creating one..."
+    python -m venv .venv
+    source ./.venv/bin/activate
+    echo "Virtual environment created and activated."
+  fi
+
+  python_version=$(python --version | awk '{print $2}')
+  echo "Using Python version: $python_version"
+
+  if [[ -f app.py ]]; then
+    echo "app.py Existes"
+  else
+    echo "app.py not found. Creating a default app.py..."
+    echo 'print("Hello, World!")' > app.py
+    echo "Default app.py created with 'print(\"Hello, World!\")'."
+    python app.py
+  fi
+
+  if [[ ! -f pyrightconfig.json ]]; then
+    echo "pyrightconfig.json not found. Creating a default one..."
+    cat <<EOL > pyrightconfig.json
+{
+  "venvPath": "./",
+  "venv": ".venv",
+  "pythonVersion": "$python_version",
+  "pythonPlatform": "Linux",
+  "include": [
+        "./**/*.py"
+    ],
+  "exclude": [
+        "node_modules",
+        ".git"
+    ]
+}
+EOL
+    echo "pyrightconfig.json created with Python version $python_version."
+  fi
+}
+
+alias runenv='run_python_env'
+
+
+speedy() {
+  if ! tmux has-session -t speedy-n 2>/dev/null; then
+    tmuxifier load-session speedy-n
+  fi
+
+  tmux detach
+
+  if ! tmux has-session -t speedy-be 2>/dev/null; then
+    tmuxifier load-session speedy-be
+  fi
+
 }
 
 
@@ -245,3 +321,7 @@ export BUILDDIR="/home/zarqan-khn/.build"
 
 
 export JDTLS_JVM_ARGS="-javaagent:$HOME/.local/share/nvim/mason/packages/jdtls/lombok.jar"
+
+# Turso
+export PATH="$PATH:/home/zarqan-khn/.turso"
+export PATH="$HOME/.local/bin:$PATH"
