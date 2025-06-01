@@ -67,15 +67,15 @@ mv-spring() {
 
 fix-hp() {
     systemctl --user restart pipewire wireplumber pipewire-pulse
-    if pgrep chrome > /dev/null; then
-        pkill chrome
-        google-chrome-stable --enable-features=WebRTCPipeWireCapturer &
-    elif pgrep chromium > /dev/null; then
-        pkill chromium
-        chromium --enable-features=WebRTCPipeWireCapturer &
-    else
-        echo "Chrome/Chromium is not running."
-    fi
+    # if pgrep chrome > /dev/null; then
+    #     pkill chrome
+    #     google-chrome-stable --enable-features=WebRTCPipeWireCapturer &
+    # elif pgrep chromium > /dev/null; then
+    #     pkill chromium
+    #     chromium --enable-features=WebRTCPipeWireCapturer &
+    # else
+    #     echo "Chrome/Chromium is not running."
+    # fi
 }
 
 crun() {
@@ -111,21 +111,13 @@ javarun() {
       echo "Error: No source file provided."
       return 1
     fi
-
     if [ ! -f "$2" ]; then
       echo "Error: Source file '$2' not found."
       return 1
     fi
-
-    # Extract the filename without extension
     filename="${2%.*}"
-
-    # Compile the Java file
     javac "$2"
-    
-    # Check if compilation was successful
     if [ $? -eq 0 ]; then
-      # Run the compiled Java class using 'java' command
       java "$filename"
     else
       echo "Compilation failed."
@@ -322,6 +314,22 @@ export BUILDDIR="/home/zarqan-khn/.build"
 
 export JDTLS_JVM_ARGS="-javaagent:$HOME/.local/share/nvim/mason/packages/jdtls/lombok.jar"
 
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+export PATH=$JAVA_HOME/bin:$PATH
+
 # Turso
 export PATH="$PATH:/home/zarqan-khn/.turso"
 export PATH="$HOME/.local/bin:$PATH"
+
+
+
+# flutter
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
+export PATH=$ANDROID_HOME/emulator:$PATH
+export CHROME_EXECUTABLE=/usr/bin/google-chrome-stable
+unset ANDROID_SDK_ROOT
+export PATH="/opt/flutter/bin/cache/dart-sdk/bin:$PATH"
+
+
+setopt nocorrect

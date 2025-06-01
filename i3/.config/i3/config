@@ -81,6 +81,13 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+
+# force floating mode 
+
+for_window [class="Emulator"] floating enable
+# for_window [class="Unity"] floating enable
+
+
 # start a terminal
 # bindsym $mod+Return exec alacritty
 # bindsym $mod+Return exec kitty

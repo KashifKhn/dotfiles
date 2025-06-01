@@ -1,69 +1,76 @@
 let mapleader = " "
 
-" clear search highlights with escape in normal mode
+" Clear search highlights with Escape in normal mode
 nnoremap <esc> :nohlsearch<cr>
 
-" exit insert mode by typing 'jj'
+" Exit insert mode by typing 'jj'
 inoremap jj <esc>
 
-set relativenumber          " enable relative line numbers for motion
-set scrolloff=5             " keep cursor 5 lines from screen edge
-set cursorline              " highlight the current line
-
+" Enable relative line numbers
+set relativenumber
+set scrolloff=5
+set cursorline
 
 " Copy to global clipboard
 nnoremap <C-c> "+y
 vnoremap <C-c> "+y
 
-" window navigation
-nnoremap <c-h> <c-w>h       " move to the left window
-nnoremap <c-l> <c-w>l       " move to the right window
-nnoremap <c-j> <c-w>j       " move to the window below
-nnoremap <c-k> <c-w>k       " move to the window above
+nnoremap p "+p
+nnoremap P "+P
 
-" intellij tool window toggles
-" toggle project tool window with leader + e
-nnoremap <leader>e :action Toggleprojecttoolwindow<cr>
-" close project tool window with leader + ee
-nnoremap <leader>ee :action Hideactivewindow<cr>
+" Window navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
 
-nnoremap <leader>t :action Activateterminaltoolwindow<cr> " open terminal
+" JetBrains Rider-specific mappings
+" Toggle project tool window with leader + e
+nnoremap <leader>e :action ViewProjectToolWindow<CR>
+" Close active tool window
+nnoremap <leader>ee :action HideActiveWindow<CR>
 
-nnoremap <leader>g :action Gotofile<cr>
-nnoremap <leader>p :action Showrecentfiles<cr>
+" File navigation
+nnoremap <leader>g :action GotoFile<CR>
+nnoremap <leader>p :action RecentFiles<CR>
 
-nnoremap gd :action Gotodeclaration<cr>
-nnoremap gr :action Findusages<cr>
-nnoremap gi :action Gotoimplementation<cr>
-nnoremap <leader>d :action Gototypedeclaration<cr>
-nnoremap <leader>ds :action Filestructurepopup<cr>
-nnoremap <leader>ws :action Typehierarchypopup<cr>
-nnoremap <leader>rn :action Renameelement<cr>
-nnoremap <leader>ch :action Quickdocumentation<cr>
-nnoremap <leader>ca :action Showintentionactions<cr>
-nnoremap <leader>cg :action Generate<cr>
-nnoremap <leader>cd :action Showerrorsinproject<cr>
-nnoremap <leader>cf :action CodeFormatGroup<cr>
-     
-" additional mappings
-nnoremap <leader>sf :action Searcheverywhere<cr>
-nnoremap <leader>sw :action Findwordatcaret<cr>
-nnoremap <leader>sg :action Searchgrep<cr>
-nnoremap <leader>sd :action Showerrorsinfile<cr>
-nnoremap <leader>sr :action Recentchanges<cr>
-nnoremap <leader>s. :action Recentfiles<cr>
-nnoremap <leader><leader> :action switcher<cr>
+" Code navigation
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gr :action FindUsages<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap <leader>d :action GotoTypeDeclaration<CR>
+nnoremap <leader>ds :action FileStructurePopup<CR>
+nnoremap <leader>ws :action TypeHierarchy<CR>
 
-" navigate through suggestions with ctrl +n and ctrl + p
-nnoremap <c-n> :action Nextlookupitem<cr>
-nnoremap <c-p> :action Previouslookupitem<cr>
+" Refactoring and actions
+nnoremap <leader>rn :action RenameElement<CR>
+nnoremap <leader>ch :action QuickDocumentation<CR>
+nnoremap <leader>ca :action ShowIntentionActions<CR>
+nnoremap <leader>cg :action Generate<CR>
+nnoremap <leader>cd :action ShowErrorsInProject<CR>
+nnoremap <leader>cf :action ReformatCode<CR>
+nnoremap <leader>cr :action RenameElement<CR>
 
-" trigger autocompletion if not showing
-nnoremap <c-space> :action Codecompletion<cr>
+" Searching
+nnoremap <leader>sf :action SearchEverywhere<CR>
+nnoremap <leader>sw :action FindWordAtCaret<CR>
+nnoremap <leader>sg :action FindInPath<CR>
+nnoremap <leader>sd :action ShowErrorsInFile<CR>
+nnoremap <leader>sr :action RecentChanges<CR>
+nnoremap <leader>s. :action RecentFiles<CR>
 
-" select the current suggestion
-nnoremap <c-y> :action Editorchooselookupitem<cr>
+" Switcher (quick panel for open files)
+nnoremap <leader><leader> :action Switcher<CR>
 
+" Code completion
+nnoremap <C-n> :action NextTemplateParameter<CR>
+nnoremap <C-p> :action PreviousTemplateParameter<CR>
+nnoremap <C-Space> :action CodeCompletion<CR>
+" nnoremap <C-y> :action ChooseLookupItemReplace<CR>
+nnoremap <C-y> :action EditorChooseLookupItem<CR>
 
+" Comment/uncomment current line with gcc
+nnoremap gcc :action CommentByLineComment<CR>
 
-
+" Comment/uncomment selection with gc in visual mode
+vnoremap gc :action CommentGroup<CR>
