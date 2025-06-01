@@ -10,7 +10,6 @@ return {
 			})
 		end,
 	},
-
 	{
 		"zbirenbaum/copilot-cmp",
 		config = function()

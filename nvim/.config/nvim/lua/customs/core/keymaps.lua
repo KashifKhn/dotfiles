@@ -28,9 +28,14 @@ keymap.set("n", "<leader>wl", "<C-W>l", { desc = "Move to window right", remap =
 keymap.set("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
 keymap.set("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
 keymap.set("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
+vim.keymap.set({ "n", "i" }, "<Insert>", "<Nop>", { desc = "Disable Insert key" })
 
 -- Disable arrow keys in all modes
--- keymap.set({ "n", "i", "v" }, "<Up>", "<Nop>", { desc = "Disable Up Arrow" })
--- keymap.set({ "n", "i", "v" }, "<Down>", "<Nop>", { desc = "Disable Down Arrow" })
--- keymap.set({ "n", "i", "v" }, "<Left>", "<Nop>", { desc = "Disable Left Arrow" })
--- keymap.set({ "n", "i", "v" }, "<Right>", "<Nop>", { desc = "Disable Right Arrow" })
+keymap.set({ "n", "i", "v" }, "<Up>", "<Nop>", { desc = "Disable Up Arrow" })
+keymap.set({ "n", "i", "v" }, "<Down>", "<Nop>", { desc = "Disable Down Arrow" })
+keymap.set({ "n", "i", "v" }, "<Left>", "<Nop>", { desc = "Disable Left Arrow" })
+keymap.set({ "n", "i", "v" }, "<Right>", "<Nop>", { desc = "Disable Right Arrow" })
+
+keymap.set("n", "<leader>rc", function()
+	require("nvim-remove-comments").remove_comments()
+end, { desc = "Remove Comments" })

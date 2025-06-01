@@ -4,7 +4,13 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {},
 		config = function()
-			require("typescript-tools").setup({})
+			require("typescript-tools").setup({
+				settings = {
+					separate_diagnostic_server = false,
+					publish_diagnostic_on = "insert_leave",
+					expose_as_code_action = "all",
+				},
+			})
 
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("typescript-tools-lsp", { clear = true }),
@@ -13,6 +19,7 @@ return {
 					if not client then
 						return
 					end
+
 					if not client.name == "typescript-tools" then
 						return
 					end
@@ -44,6 +51,8 @@ return {
 						for i, action in ipairs(actions) do
 							table.insert(numbered_actions, string.format("%d. %s", i, action))
 						end
+
+						map("gd", require("telescope.builtin").lsp_definitions, "Goto Definition")
 
 						map("<leader>cA", function()
 							vim.ui.select(numbered_actions, {

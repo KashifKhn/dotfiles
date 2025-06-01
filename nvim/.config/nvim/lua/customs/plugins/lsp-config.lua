@@ -7,6 +7,8 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		{ "j-hui/fidget.nvim", opts = {} },
 		"hrsh7th/cmp-nvim-lsp",
+		"stevearc/conform.nvim",
+		"b0o/SchemaStore.nvim",
 	},
 	config = function()
 		vim.api.nvim_create_autocmd("LspAttach", {
@@ -72,16 +74,41 @@ return {
 				end
 			end,
 		})
+
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
+		local lspconfig = require("lspconfig")
+
 		local servers = {
-			tailwindcss = {},
-			jsonls = {},
-			bashls = {},
-			yamlls = {},
-			html = {},
-			clangd = {},
+			tailwindcss = true,
+			html = true,
+			clangd = true,
+			jdtls = true,
+			dockerls = true,
+			docker_compose_language_service = true,
+			prismals = true,
+			lua_ls = true,
+			bashls = true,
+			jsonls = {
+				settings = {
+					json = {
+						schemas = require("schemastore").json.schemas(),
+						validate = { enable = true },
+					},
+				},
+			},
+			yamlls = {
+				settings = {
+					yaml = {
+						schemaStore = {
+							enable = false,
+							url = "",
+						},
+						schemas = require("schemastore").yaml.schemas(),
+					},
+				},
+			},
 			pyright = {
 				settings = {
 					python = {
@@ -93,46 +120,69 @@ return {
 					},
 				},
 			},
-			gopls = {},
-			jdtls = {},
-			dockerls = {},
-			docker_compose_language_service = {},
-			prismals = {},
-			lua_ls = {
+			gopls = {
 				settings = {
-					Lua = {
-						completion = {
-							callSnippet = "Replace",
+					gopls = {
+						hints = {
+							assignVariableTypes = true,
+							compositeLiteralFields = true,
+							compositeLiteralTypes = true,
+							constantValues = true,
+							functionTypeParameters = true,
+							parameterNames = true,
+							rangeVariableTypes = true,
 						},
 					},
 				},
 			},
 		}
-		require("mason").setup()
-		local ensure_installed = vim.tbl_keys(servers or {})
-		vim.list_extend(ensure_installed, {
-			"stylua",
-		})
-		require("mason-tool-installer").setup({
-			ensure_installed = {
-				ensure_installed,
-				"prettier",
-				"stylua",
-				"black",
-				{ "eslint_d", version = "13.1.2" },
-			},
-		})
 
-		require("mason-lspconfig").setup({
-			ensure_installed = {},
-			automatic_installation = {},
-			handlers = {
-				function(server_name)
-					local server = servers[server_name] or {}
-					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-					require("lspconfig")[server_name].setup(server)
-				end,
-			},
-		})
+		local servers_to_install = vim.tbl_filter(function(key)
+			local t = servers[key]
+			if type(t) == "table" then
+				return not t.manual_install
+			else
+				return t
+			end
+		end, vim.tbl_keys(servers))
+
+		require("mason").setup()
+		require("mason").setup()
+		local ensure_installed = {
+			"prettier",
+			"stylua",
+			"lua_ls",
+			"delve",
+			"black",
+			{ "eslint_d", version = "13.1.2" },
+			"tailwind-language-server",
+		}
+
+		vim.list_extend(ensure_installed, servers_to_install)
+
+		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+
+		for name, config in pairs(servers) do
+			if config == true then
+				config = {}
+			end
+			config = vim.tbl_deep_extend("force", {}, {
+				capabilities = capabilities,
+			}, config)
+
+			lspconfig[name].setup(config)
+		end
+
+		-- require("mason-lspconfig").setup({
+		-- 	ensure_installed = {},
+		-- 	automatic_installation = {},
+		-- 	handlers = {
+		-- 		function(server_name)
+		-- 			local server = servers[server_name] or {}
+		-- 			server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+		-- 			require("lspconfig")[server_name].setup(server)
+		-- 		end,
+		-- 	},
+		-- })
 	end,
 }

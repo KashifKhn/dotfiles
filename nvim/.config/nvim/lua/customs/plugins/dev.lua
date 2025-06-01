@@ -8,4 +8,10 @@ return {
 			},
 		},
 	},
+	{
+		dir = "/home/zarqan-khn/mycoding/myprojects/nvim-remove-comments",
+		name = "nvim-remove-comments",
+		lazy = false,
+		priority = 1000,
+	},
 }
